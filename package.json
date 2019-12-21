@@ -1,6 +1,7 @@
 {
   "name": "template-front",
   "version": "0.1.0",
+  "repository": "https://github.com/CyrilSiman/React-Template-Front.git",
   "licence": "MIT",
   "private": true,
   "dependencies": {
