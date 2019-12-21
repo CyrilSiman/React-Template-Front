@@ -4,7 +4,7 @@ import { Field, Form } from 'react-final-form'
 import { useTranslation } from 'react-i18next'
 import { useQuery } from 'react-apollo'
 import { useApolloClient, useMutation } from '@apollo/react-hooks'
-
+import formatDistance from 'date-fns/formatDistance'
 import withStyles from '@material-ui/core/styles/withStyles'
 
 import Typography from '@material-ui/core/Typography'
@@ -34,9 +34,9 @@ const LoginScene = (props) => {
         }
     })
 
-    const [loginMutation, { loading: mutationLoading, error : errorMutation }] = useMutation(loginQuery, {
+    const [loginMutation, { loading: mutationLoading, data:dataLogin, error : errorMutation }] = useMutation(loginQuery, {
         onCompleted: (data) => {
-            if(data.login) {
+            if(data.login && data.login.authenticated) {
                 client.writeData({ data: { isLoggedIn: true } })
                 history.push(routes.PRIVATE_DASHBOARD)
             }
@@ -54,7 +54,19 @@ const LoginScene = (props) => {
         loginMutation({ variables: { email: values.email, password: values.password } })
     }
 
+    let message = null
+    if(dataLogin) {
+        if(dataLogin.login.tryLeft) {
+            message = <Typography style={{margin:20}} color={'error'}>{t('tryLeftBeforeBlock',{count:dataLogin.login.tryLeft})}</Typography>
+        }
+        if(dataLogin.login.retryAfter) {
+            const value = formatDistance(0, dataLogin.login.retryAfter * 1000, { includeSeconds: true })
+            message = <Typography style={{margin:20}} color={'error'}>{t('blockDuration',{duration:value})}</Typography>
+        }
+    }
+
     return <WindowForm>
+        {message}
         <Form onSubmit={(values) => submit(values)}
               initialValues={{ email: '', password: '' }}
               validate={values => {

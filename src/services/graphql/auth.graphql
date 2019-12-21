@@ -1,5 +1,9 @@
 mutation loginQuery($email: String!, $password : String!) {
-    login(email: $email, password: $password)
+    login(email: $email, password: $password) {
+        authenticated
+        retryAfter
+        tryLeft
+    }
 }
 
 mutation logoutQuery {
