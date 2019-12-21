@@ -1,0 +1,4 @@
+{
+    showLeftMenu @client
+    isLoggedIn @client
+}
