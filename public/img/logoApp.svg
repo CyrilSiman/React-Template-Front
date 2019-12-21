@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="187px" height="84px" viewBox="0 0 187 84" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 61 (89581) - https://sketch.com -->
+    <title>Untitled</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <text id="Logo" font-family="MuseoSans-900, Museo Sans" font-size="31" font-weight="bold" fill="#000000">
+            <tspan x="97" y="52">Logo</tspan>
+        </text>
+        <path d="M74.21052,20.0051442 C78.4943441,26.2665437 81,33.8406582 81,42 C81,63.5391052 63.5391052,81 42,81 C33.3526302,81 25.3625887,78.1856426 18.8958646,73.4229168 Z M42,3 C51.4126818,3 60.0465365,6.33455539 66.7846998,11.8868019 L11.0393333,65.7190227 C5.99699023,59.1470913 3,50.9235379 3,42 C3,20.4608948 20.4608948,3 42,3 Z" id="Combined-Shape" stroke="#9F87C3" stroke-width="6"></path>
+    </g>
+</svg>
