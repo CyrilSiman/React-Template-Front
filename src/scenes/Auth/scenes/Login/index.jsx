@@ -7,6 +7,7 @@ import { useApolloClient, useMutation } from '@apollo/react-hooks'
 import formatDistance from 'date-fns/formatDistance'
 import withStyles from '@material-ui/core/styles/withStyles'
 
+import CircularProgress from '@material-ui/core/CircularProgress'
 import Typography from '@material-ui/core/Typography'
 import TextField from 'ROOT/components/InputForm/TextField'
 import Button from '@material-ui/core/Button/Button'
@@ -88,8 +89,8 @@ const LoginScene = (props) => {
                              className='' label={t('field.password')} autoComplete='off' fullWidth />
                       {mutationLoading &&
                       <Button fullWidth variant='contained' color='primary' type='submit' className={classes.submit}
-                              disabled>
-                          <i className='fa fa-refresh fa-spin' />
+                              disabled >
+                          <CircularProgress size={22}/>
                       </Button>
                       }
                       {!mutationLoading &&
