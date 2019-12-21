@@ -2,7 +2,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Why
 
-This template help me (and maybe you) to quick run a new react project with a lot useful libraries.
+This template help me (and maybe you) to quick run a new react project with a lot of useful libraries.
 This template is one of three part : 
 
 - React front template (customer part)
