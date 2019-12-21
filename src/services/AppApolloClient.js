@@ -1,11 +1,12 @@
 import {InMemoryCache} from 'apollo-cache-inmemory'
-import {onError} from 'apollo-link-error'
-import {Observable} from 'apollo-link'
+//import {onError} from 'apollo-link-error'
+//import {Observable} from 'apollo-link'
+//import {setContext} from 'apollo-link-context'
 import constants from 'ROOT/services/constants'
 import { HttpLink } from 'apollo-link-http'
-import {setContext} from 'apollo-link-context'
 import ApolloClient from 'apollo-client'
 
+/*
 const refreshTokenLink = onError(  ({ graphQLErrors, networkError, operation, forward }) => {
 
     if (graphQLErrors && graphQLErrors[0]) {
@@ -57,12 +58,13 @@ const refreshTokenLink = onError(  ({ graphQLErrors, networkError, operation, fo
         console.log(`[Network error]: ${networkError}`)
     }
 })
-
+*/
 const httpLink = new HttpLink({
     uri: constants.GRAPHQL_URL,
     credentials: 'include',
 })
 
+/*
 const authLink = setContext((_, { headers }) => {
     // get the authentication token from local storage if it exists
     const token = localStorage.getItem(constants.AUTH_TOKEN)
@@ -70,10 +72,11 @@ const authLink = setContext((_, { headers }) => {
     return {
         headers: {
             ...headers,
-            authorization: token ? `Bearer ${token}` : '',
+            //authorization: token ? `Bearer ${token}` : '',
         }
     }
 })
+*/
 
 const cache = new InMemoryCache({
     dataIdFromObject: object => object._id || null
@@ -81,7 +84,9 @@ const cache = new InMemoryCache({
 const client = new ApolloClient({
     cache,
     resolvers: {},
-    link: authLink.concat(refreshTokenLink).concat(httpLink),
+    //Use it if you want localstorage token bearer solution
+    //link: authLink.concat(refreshTokenLink).concat(httpLink),
+    link: httpLink,
 })
 
 const data = {
