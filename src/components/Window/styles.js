@@ -1,5 +1,7 @@
 
-const styles = theme => ({
+import { makeStyles } from '@material-ui/core/styles'
+
+const useStyles = makeStyles(theme => ({
     main: {
         width: 'auto',
         display: 'block', // Fix IE 11 issue.
@@ -22,8 +24,7 @@ const styles = theme => ({
         margin: '7.5% auto',
         maxWidth: '460px',
         position: 'relative',
-    }
-})
+    },
+}))
 
-
-export default styles
+export default useStyles

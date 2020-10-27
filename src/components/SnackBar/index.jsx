@@ -1,10 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Snackbar from '@material-ui/core/Snackbar'
-import { withStyles } from '@material-ui/core/styles'
-import styles from './styles'
 import SnackBarContent from './components/SnackBarContent'
-
 
 class SnackbarCustom extends React.Component {
 
@@ -44,12 +41,10 @@ class SnackbarCustom extends React.Component {
 }
 
 SnackbarCustom.propTypes = {
-    classes: PropTypes.object.isRequired,
-    className: PropTypes.string,
     message: PropTypes.node,
     onClose: PropTypes.func,
     open: PropTypes.bool.isRequired,
     variant: PropTypes.oneOf(['success', 'warning', 'error', 'info']).isRequired,
 }
 
-export default withStyles(styles)(SnackbarCustom)
+export default SnackbarCustom

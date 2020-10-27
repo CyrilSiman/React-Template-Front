@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { useQuery } from '@apollo/client'
 
 import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-dom'
@@ -9,19 +10,6 @@ import LoginScene from 'ROOT/scenes/Auth/scenes/Login'
 import LostPasswordScene from 'ROOT/scenes/Auth/scenes/LostPassword'
 
 import localstate from 'ROOT/services/graphql/localState.graphql'
-
-function App () {
-    return (
-        <Router>
-            <Switch>
-                <Route component={LoginScene} path={routes.LOGIN} />
-                <Route component={LostPasswordScene} path={routes.LOST_PASSWORD} />
-                <PrivateRoute component={AuthenticatedRouter} path={routes.PRIVATE_DEFAULT} />
-                <Route component={NoMatch} />
-            </Switch>
-        </Router>
-    )
-}
 
 function NoMatch ({ ...rest }) {
 
@@ -42,6 +30,21 @@ function NoMatch ({ ...rest }) {
     )
 }
 
+function App () {
+    return (
+        <Router>
+            <Switch>
+                <Route component={LoginScene} path={routes.LOGIN} />
+                <Route component={LostPasswordScene} path={routes.LOST_PASSWORD} />
+                <PrivateRoute component={AuthenticatedRouter} path={routes.PRIVATE_DEFAULT} />
+                <Route component={NoMatch} />
+            </Switch>
+        </Router>
+    )
+}
+
+
+
 function PrivateRoute ({ component: Component, ...rest }) {
     const { data } = useQuery(localstate)
 
@@ -57,6 +60,11 @@ function PrivateRoute ({ component: Component, ...rest }) {
             }
         />
     )
+}
+
+PrivateRoute.propTypes = {
+    component:PropTypes.element.isRequired,
+    location:PropTypes.object.isRequired,
 }
 
 export default App

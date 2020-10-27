@@ -1,4 +1,6 @@
-const styles = theme => ({
+import { makeStyles } from '@material-ui/core/styles'
+
+const useStyles = makeStyles(theme => ({
     categoryHeader: {
         paddingTop: theme.spacing(4),
         paddingBottom: theme.spacing(2),
@@ -9,7 +11,7 @@ const styles = theme => ({
         letterSpacing: '1px',
         fontWeight: '500',
         textTransform : 'uppercase',
-        padding: theme.spacing(2)
+        padding: theme.spacing(2),
     },
     item: {
         paddingTop: 1,
@@ -47,7 +49,7 @@ const styles = theme => ({
             display: 'flex',
             alignContent: 'center',
             alignItems: 'center',
-        }
+        },
     },
     itemPrimary: {
         fontSize: 'inherit',
@@ -61,6 +63,6 @@ const styles = theme => ({
         marginTop: theme.spacing(2),
     },
     toolbar: theme.mixins.toolbar,
-})
+}))
 
-export default styles
+export default useStyles

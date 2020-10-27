@@ -1,7 +1,8 @@
 import green from '@material-ui/core/colors/green'
 import amber from '@material-ui/core/colors/amber'
+import { makeStyles } from '@material-ui/core/styles'
 
-const styles = theme => ({
+const useStyles = makeStyles(theme => ({
     success: {
         backgroundColor: green[600],
     },
@@ -25,7 +26,7 @@ const styles = theme => ({
         display: 'flex',
         alignItems: 'center',
     },
-})
+}))
 
 
-export default styles
+export default useStyles

@@ -3,8 +3,7 @@ import { InMemoryCache } from '@apollo/client'
 //import {Observable} from 'apollo-link'
 //import {setContext} from 'apollo-link-context'
 import constants from 'ROOT/services/constants'
-import { HttpLink } from '@apollo/client'
-import ApolloClient from '@apollo/client'
+import { ApolloClient, HttpLink } from '@apollo/client'
 
 /*
 const refreshTokenLink = onError(  ({ graphQLErrors, networkError, operation, forward }) => {
@@ -94,10 +93,10 @@ const data = {
     isLoggedIn: false,
 }
 
-cache.writeData({ data })
+cache.restore({ data })
 
 client.onResetStore(() => {
-    cache.writeData({ data })
+    cache.restore({ data })
 })
 
 

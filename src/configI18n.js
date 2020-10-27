@@ -2,8 +2,8 @@ import i18n from 'i18next'
 import { initReactI18next } from 'react-i18next'
 
 import LanguageDetector from 'i18next-browser-languagedetector'
-// eslint-disable-next-line import/no-webpack-loader-syntax
-var resBundle =  require('i18next-resource-store-loader!./i18n/index.js')
+
+const resBundle =  require('i18next-resource-store-loader!./i18n/index.js')
 
 // not like to use this?
 // have a look at the Quick start guide 
@@ -12,19 +12,19 @@ var resBundle =  require('i18next-resource-store-loader!./i18n/index.js')
 i18n
 // detect user language
 // learn more: https://github.com/i18next/i18next-browser-languageDetector
-.use(LanguageDetector)
+    .use(LanguageDetector)
 // pass the i18n instance to react-i18next.
-.use(initReactI18next)
+    .use(initReactI18next)
 // init i18next
 // for all options read: https://www.i18next.com/overview/configuration-options
-.init({
-    resources: resBundle,
-    fallbackLng: 'en',
-    debug: true,
+    .init({
+        resources: resBundle,
+        fallbackLng: 'en',
+        debug: true,
 
-    interpolation: {
-        escapeValue: false, // not needed for react as it escapes by default
-    }
-})
+        interpolation: {
+            escapeValue: false, // not needed for react as it escapes by default
+        },
+    })
 
 export default i18n

@@ -1,9 +1,8 @@
 import SnackbarContent from '@material-ui/core/SnackbarContent/SnackbarContent'
 import IconButton from '@material-ui/core/IconButton/IconButton'
 import PropTypes from 'prop-types'
-import {withStyles} from '@material-ui/core'
 import React from 'react'
-import styles from './styles'
+import useStyles from './styles'
 import CheckCircleIcon from '@material-ui/icons/CheckCircle'
 import WarningIcon from '@material-ui/icons/Warning'
 import ErrorIcon from '@material-ui/icons/Error'
@@ -18,26 +17,27 @@ const variantIcon = {
     info: InfoIcon,
 }
 
-
 function SnackBarContent(props) {
-    const { classes, className, message, onClose, variant, ...other } = props
+    const { className, message, onClose, variant, ...other } = props
     const Icon = variantIcon[variant]
+
+    const classes =  useStyles()
 
     return (
         <SnackbarContent
             className={classNames(classes[variant], className)}
-            aria-describedby='client-snackbar'
+            aria-describedby="client-snackbar"
             message={
-                <span id='client-snackbar' className={classes.message}>
-          <Icon className={classNames(classes.icon, classes.iconVariant)} />
+                <span id="client-snackbar" className={classes.message}>
+                    <Icon className={classNames(classes.icon, classes.iconVariant)} />
                     {message}
-        </span>
+                </span>
             }
             action={[
                 <IconButton
-                    key='close'
-                    aria-label='Close'
-                    color='inherit'
+                    key="close"
+                    aria-label="Close"
+                    color="inherit"
                     className={classes.close}
                     onClick={onClose}
                 >
@@ -50,11 +50,10 @@ function SnackBarContent(props) {
 }
 
 SnackBarContent.propTypes = {
-    classes: PropTypes.object.isRequired,
     className: PropTypes.string,
     message: PropTypes.node,
     onClose: PropTypes.func,
     variant: PropTypes.oneOf(['success', 'warning', 'error', 'info']).isRequired,
 }
 
-export default withStyles(styles)(SnackBarContent)
+export default SnackBarContent

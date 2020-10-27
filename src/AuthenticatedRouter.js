@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import routes from 'ROOT/routes'
-import {Redirect, Route, Switch} from 'react-router-dom'
+import { Redirect, Route, Switch } from 'react-router-dom'
 
 import AppBar from 'ROOT/components/AppBar'
 import LeftSideMenu from 'ROOT/components/LeftSideMenu'
@@ -17,17 +17,21 @@ const navigation = [
         id: 'Main',
         children: [
             { id: 'PageOne', icon: <PeopleIcon />, active: false, path : routes.PRIVATE_MAIN_PAGE_ONE },
-            {id: 'PageTow', icon: <AccountCardDetails/>, active: false, path: routes.PRIVATE_MAIN_PAGE_TWO},
+            { id: 'PageTow', icon: <AccountCardDetails />, active: false, path: routes.PRIVATE_MAIN_PAGE_TWO },
         ],
     },
     {
         id: 'Configuration',
         children: [
-            {id: 'Logs', icon: <AlertCircle/>, active: false, path: routes.PRIVATE_CONFIG_PAGE_ONE},
-            {id: 'Mails', icon: <Email/>, active: false, path: routes.PRIVATE_CONFIG_PAGE_TWO},
-        ]
-    }
+            { id: 'Logs', icon: <AlertCircle />, active: false, path: routes.PRIVATE_CONFIG_PAGE_ONE },
+            { id: 'Mails', icon: <Email />, active: false, path: routes.PRIVATE_CONFIG_PAGE_TWO },
+        ],
+    },
 ]
+
+const defaultRedirect = (path) => () => (
+    <Redirect to={path} />
+)
 
 class AuthenticatedRouter extends Component {
     render() {
@@ -46,9 +50,6 @@ class AuthenticatedRouter extends Component {
     }
 }
 
-const defaultRedirect = (path) => () => (
-    <Redirect to={path}/>
-)
 
 export default AuthenticatedRouter
 

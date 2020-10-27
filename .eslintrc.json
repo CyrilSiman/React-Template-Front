@@ -10,7 +10,7 @@
     },
     "settings": {
         "react": {
-            "version": "16.3.2"
+            "version": "16.12.0"
         }
     },
     "env": {
@@ -81,6 +81,7 @@
             "always"
         ],
         "react-hooks/rules-of-hooks": "error",
+
         "indent": [
             "error",
             4

@@ -1,6 +1,8 @@
+import { makeStyles } from '@material-ui/core/styles'
+
 const lightColor = 'rgba(255, 255, 255, 0.7)'
 
-const styles = theme => ({
+const useStyles = makeStyles(theme => ({
     menuButton: {
         marginLeft: -theme.spacing(),
     },
@@ -20,6 +22,6 @@ const styles = theme => ({
     header : {
         zIndex: theme.zIndex.drawer + 1,
     },
-})
+}))
 
-export default styles
+export default useStyles
