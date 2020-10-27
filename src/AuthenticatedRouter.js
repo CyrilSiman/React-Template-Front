@@ -8,8 +8,9 @@ import DashboardScene from 'ROOT/scenes/Dashboard'
 import MainPageOneScene from 'ROOT/scenes/Main'
 
 import PeopleIcon from '@material-ui/icons/People'
-import {AlertCircle, Email, AccountCardDetails} from 'mdi-material-ui'
-
+import AlertCircle from 'mdi-material-ui/AlertCircle'
+import Email from 'mdi-material-ui/Email'
+import AccountCardDetails from 'mdi-material-ui/AccountDetails'
 
 const navigation = [
     {

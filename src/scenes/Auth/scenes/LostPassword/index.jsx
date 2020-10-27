@@ -1,5 +1,5 @@
 import React from 'react'
-import { useMutation } from '@apollo/react-hooks'
+import { useMutation } from '@apollo/client'
 import { useTranslation } from 'react-i18next'
 import { useSnackbar } from 'notistack'
 import {Link} from 'react-router-dom'

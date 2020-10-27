@@ -1,29 +1,28 @@
-import React, {Suspense} from 'react'
+import React, { Suspense } from 'react'
 import ReactDOM from 'react-dom'
 import App from './App'
 import * as serviceWorker from './serviceWorker'
 
+import { ApolloProvider } from '@apollo/client'
 import AppApolloClient from 'ROOT/services/AppApolloClient'
 import CssBaseline from '@material-ui/core/CssBaseline'
-import {MuiThemeProvider} from '@material-ui/core'
-import {defaultTheme} from 'ROOT/themes'
-import {MuiPickersUtilsProvider} from '@material-ui/pickers'
+import { MuiThemeProvider } from '@material-ui/core'
+import { defaultTheme } from 'ROOT/themes'
+import { MuiPickersUtilsProvider } from '@material-ui/pickers'
 import frLocale from 'date-fns/locale/fr'
 import DateFnsUtils from '@date-io/date-fns'
-import {SnackbarProvider} from 'notistack'
+import { SnackbarProvider } from 'notistack'
 
 import './configI18n'
-
-import { ApolloProvider } from '@apollo/react-hooks'
 
 ReactDOM.render(
     <Suspense fallback="loading">
         <ApolloProvider client={AppApolloClient}>
             <MuiThemeProvider theme={defaultTheme}>
                 <MuiPickersUtilsProvider utils={DateFnsUtils} locale={frLocale}>
-                    <CssBaseline/>
+                    <CssBaseline />
                     <SnackbarProvider maxSnack={3} autoHideDuration={2000}>
-                            <App/>
+                        <App />
                     </SnackbarProvider>
                 </MuiPickersUtilsProvider>
             </MuiThemeProvider>

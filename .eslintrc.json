@@ -1,0 +1,89 @@
+{
+    "globals": {
+        "fetch": false,
+        "Headers": false,
+        "Request": false,
+        "__WEB__": true,
+        "__NODE__": true,
+        "VERSION": true,
+        "__webpack_public_path__": true
+    },
+    "settings": {
+        "react": {
+            "version": "16.3.2"
+        }
+    },
+    "env": {
+        "node": true,
+        "jest/globals": true,
+        "jasmine": true,
+        "es6": true,
+        "browser": true
+    },
+    "plugins": [
+        "json",
+        "react",
+        "flowtype",
+        "jest",
+        "react-hooks"
+    ],
+    "parser": "babel-eslint",
+    "parserOptions": {
+        "ecmaFeatures": {
+            "jsx": true
+        }
+    },
+    "extends": [
+        "eslint:recommended",
+        "plugin:react/recommended",
+        "plugin:jest/recommended"
+    ],
+    "rules": {
+        "no-unused-vars": "error",
+        "react/jsx-curly-spacing": [
+            "error",
+            "never"
+        ],
+        "react/jsx-tag-spacing": [
+            "error"
+        ],
+        "camelcase": "off",
+        "comma-dangle": [
+            "error",
+            {
+                "arrays": "always-multiline",
+                "objects": "always-multiline",
+                "imports": "always-multiline",
+                "exports": "always-multiline",
+                "functions": "never"
+            }
+        ],
+        "default-case": "error",
+        "jsx-quotes": "error",
+        "max-len": "off",
+        "no-return-await": "error",
+        "no-var": "error",
+        "no-use-before-define": "error",
+        "prefer-arrow-callback": "error",
+        "prefer-const": [
+            "error",
+            {
+                "destructuring": "all",
+                "ignoreReadBeforeAssign": true
+            }
+        ],
+        "prefer-rest-params": "error",
+        "prefer-spread": "error",
+        "radix": "error",
+        "react/display-name": "off",
+        "object-curly-spacing": [
+            "error",
+            "always"
+        ],
+        "react-hooks/rules-of-hooks": "error",
+        "indent": [
+            "error",
+            4
+        ]
+    }
+}

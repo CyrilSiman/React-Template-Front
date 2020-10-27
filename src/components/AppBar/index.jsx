@@ -25,7 +25,7 @@ import { withStyles } from '@material-ui/core/styles'
 import styles from './styles'
 import { useTranslation } from 'react-i18next'
 import { logoutQuery, meQuery } from 'ROOT/services/graphql/auth.graphql'
-import { useMutation } from '@apollo/react-hooks'
+import { useMutation } from '@apollo/client'
 
 const AppBar = (props) => {
 

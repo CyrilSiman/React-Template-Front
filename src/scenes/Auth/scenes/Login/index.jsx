@@ -3,7 +3,7 @@ import { Link, useHistory } from 'react-router-dom'
 import { Field, Form } from 'react-final-form'
 import { useTranslation } from 'react-i18next'
 import { useQuery } from 'react-apollo'
-import { useApolloClient, useMutation } from '@apollo/react-hooks'
+import { useApolloClient, useMutation } from '@apollo/client'
 import formatDistance from 'date-fns/formatDistance'
 import withStyles from '@material-ui/core/styles/withStyles'
 

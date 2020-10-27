@@ -1,10 +1,10 @@
-import {InMemoryCache} from 'apollo-cache-inmemory'
+import { InMemoryCache } from '@apollo/client'
 //import {onError} from 'apollo-link-error'
 //import {Observable} from 'apollo-link'
 //import {setContext} from 'apollo-link-context'
 import constants from 'ROOT/services/constants'
-import { HttpLink } from 'apollo-link-http'
-import ApolloClient from 'apollo-client'
+import { HttpLink } from '@apollo/client'
+import ApolloClient from '@apollo/client'
 
 /*
 const refreshTokenLink = onError(  ({ graphQLErrors, networkError, operation, forward }) => {
@@ -79,7 +79,7 @@ const authLink = setContext((_, { headers }) => {
 */
 
 const cache = new InMemoryCache({
-    dataIdFromObject: object => object._id || null
+    dataIdFromObject: object => object._id || null,
 })
 const client = new ApolloClient({
     cache,
@@ -94,7 +94,7 @@ const data = {
     isLoggedIn: false,
 }
 
-cache.writeData({data})
+cache.writeData({ data })
 
 client.onResetStore(() => {
     cache.writeData({ data })
