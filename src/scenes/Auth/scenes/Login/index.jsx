@@ -3,7 +3,7 @@ import { Link, useHistory } from 'react-router-dom'
 import { Field, Form } from 'react-final-form'
 import { useTranslation } from 'react-i18next'
 import { useQuery } from '@apollo/client'
-import { useApolloClient, useMutation } from '@apollo/client'
+import { useMutation } from '@apollo/client'
 import formatDistance from 'date-fns/formatDistance'
 
 import CircularProgress from '@material-ui/core/CircularProgress'
@@ -17,32 +17,30 @@ import WindowForm from 'ROOT/components/Window'
 import routes from 'ROOT/routes'
 import useStyles from './styles'
 import { loginQuery, meQuery } from 'ROOT/services/graphql/auth.graphql'
+import { isLoggedInVar } from 'ROOT/services/AppApolloClient'
 
 const LoginScene = () => {
 
     const classes = useStyles()
     const history = useHistory()
     const { t } = useTranslation('auth')
-    const client = useApolloClient()
 
     const { loading:loadingMeQuery } = useQuery(meQuery,{
         onCompleted : () => {
-            client.writeData({ data: { isLoggedIn: true } })
-            history.push(history.location.state.from)
-        },
-        onError : () => {
+            isLoggedInVar(true)
+            if(history.location.state && history.location.state.from) {
+                history.location.state.from
+            }
+            history.push(routes.PRIVATE_DASHBOARD)
         },
     })
 
     const [loginMutation, { loading: mutationLoading, data:dataLogin, error : errorMutation }] = useMutation(loginQuery, {
         onCompleted: (data) => {
             if(data.login && data.login.authenticated) {
-                client.writeData({ data: { isLoggedIn: true } })
+                isLoggedInVar(true)
                 history.push(routes.PRIVATE_DASHBOARD)
             }
-        },
-        onError: () => {
-            //Necessary to fix Appolo Client error
         },
     })
 

@@ -9,11 +9,11 @@ import AuthenticatedRouter from 'ROOT/AuthenticatedRouter'
 import LoginScene from 'ROOT/scenes/Auth/scenes/Login'
 import LostPasswordScene from 'ROOT/scenes/Auth/scenes/LostPassword'
 
-import localstate from 'ROOT/services/graphql/localState.graphql'
+import { GetIsLoggedIn } from 'ROOT/services/graphql/localState.graphql'
 
 function NoMatch ({ ...rest }) {
 
-    const { data } = useQuery(localstate)
+    const { data } = useQuery(GetIsLoggedIn)
 
     return (
         <Route
@@ -46,7 +46,7 @@ function App () {
 
 
 function PrivateRoute ({ component: Component, ...rest }) {
-    const { data } = useQuery(localstate)
+    const { data } = useQuery(GetIsLoggedIn)
 
     return (
         <Route

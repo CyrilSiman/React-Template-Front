@@ -25,6 +25,7 @@ import useStyles from './styles'
 import { useTranslation } from 'react-i18next'
 import { logoutQuery, meQuery } from 'ROOT/services/graphql/auth.graphql'
 import { useMutation } from '@apollo/client'
+import { showLeftMenuVar } from 'ROOT/services/AppApolloClient'
 
 const AppBar = () => {
 
@@ -36,14 +37,18 @@ const AppBar = () => {
 
     const [logoutMutation] = useMutation(logoutQuery, {
         onCompleted: async () => {
-            await client.resetStore()
-            //client.writeData({ data: { isLoggedIn: false } })
-            //history.push('/')
+            try {
+                await client.resetStore()
+            } catch {
+                //Catch possible error when apollo try to refetch all queries
+            }
         },
         onError: async () => {
-            await client.resetStore()
-            //client.writeData({ data: { isLoggedIn: false } })
-            //history.push('/')
+            try {
+                await client.resetStore()
+            } catch {
+                //Catch possible error when apollo try to refetch all queries
+            }
         },
     })
 
@@ -57,7 +62,7 @@ const AppBar = () => {
     const anchorEl = useRef(null)
 
     const toggleLeftMenu = () => {
-        client.writeData({ data: { showLeftMenu : true } })
+        showLeftMenuVar(true)
     }
 
     const twoLetterFromName = (lastName,firstName) => {

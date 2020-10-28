@@ -3,7 +3,7 @@ import { InMemoryCache } from '@apollo/client'
 //import {Observable} from 'apollo-link'
 //import {setContext} from 'apollo-link-context'
 import constants from 'ROOT/services/constants'
-import { ApolloClient, HttpLink } from '@apollo/client'
+import { ApolloClient, HttpLink, makeVar } from '@apollo/client'
 
 /*
 const refreshTokenLink = onError(  ({ graphQLErrors, networkError, operation, forward }) => {
@@ -77,9 +77,29 @@ const authLink = setContext((_, { headers }) => {
 })
 */
 
+export const showLeftMenuVar =  makeVar(false)
+export const isLoggedInVar =  makeVar(false)
+
 const cache = new InMemoryCache({
     dataIdFromObject: object => object._id || null,
+    typePolicies: { // Type policy map
+        Query: {
+            fields: {
+                showLeftMenu: {
+                    read () {
+                        return showLeftMenuVar()
+                    },
+                },
+                isLoggedIn: {
+                    read () {
+                        return isLoggedInVar()
+                    },
+                },
+            },
+        },
+    },
 })
+
 const client = new ApolloClient({
     cache,
     resolvers: {},
@@ -88,15 +108,8 @@ const client = new ApolloClient({
     link: httpLink,
 })
 
-const data = {
-    showLeftMenu: false,
-    isLoggedIn: false,
-}
-
-cache.restore({ data })
-
 client.onResetStore(() => {
-    cache.restore({ data })
+    isLoggedInVar(false)
 })
 
 

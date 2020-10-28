@@ -1,28 +1,28 @@
 import React, { Fragment } from 'react'
-import { useApolloClient, useQuery } from '@apollo/client'
+import { useQuery } from '@apollo/client'
 
 import PropTypes from 'prop-types'
 
 import Hidden from '@material-ui/core/Hidden'
 import Navigator from './components/Navigator'
 
-import localState from 'ROOT/services/graphql/localState.graphql'
+import { GetShowLeftMenu } from 'ROOT/services/graphql/localState.graphql'
 
 import useStyles, { drawerWidth } from './styles'
 import { useHistory } from 'react-router-dom'
+import { showLeftMenuVar } from 'ROOT/services/AppApolloClient'
 
 const LeftSideMenu = (props) => {
 
-    const client = useApolloClient()
     const history = useHistory()
 
-    const { loading, data } = useQuery(localState)
+    const { loading, data } = useQuery(GetShowLeftMenu)
 
     const classes = useStyles()
     const { navigation } = props
 
     const toggleLeftMenu = () => {
-        client.writeData({ data: { showLeftMenu: false } })
+        showLeftMenuVar(false)
     }
 
     const navigateToLink = (path) => {

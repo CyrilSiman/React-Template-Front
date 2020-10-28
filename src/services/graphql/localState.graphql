@@ -1,4 +1,8 @@
-{
-    showLeftMenu @client
-    isLoggedIn @client
-}
+
+    query GetIsLoggedIn {
+        isLoggedIn @client
+    }
+
+    query GetShowLeftMenu {
+        showLeftMenu @client
+    }
