@@ -32,7 +32,7 @@ const LostPasswordScene = () => {
     })
 
     const submit = (values) => {
-        resetPasswordMutation({ variables: { login: values.email } })
+        resetPasswordMutation({ variables: { email: values.email } })
     }
 
     return (<WindowForm >
