@@ -1,6 +1,4 @@
 import React, { useRef, useState } from 'react'
-import PropTypes from 'prop-types'
-import { withRouter } from 'react-router-dom'
 import { useApolloClient, useQuery } from '@apollo/client'
 import { default as MUIAppBar } from '@material-ui/core/AppBar'
 
@@ -149,8 +147,5 @@ const AppBar = () => {
     )
 }
 
-AppBar.propTypes = {
-    classes: PropTypes.object.isRequired,
-}
 
-export default withRouter(AppBar)
+export default AppBar

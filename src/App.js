@@ -11,18 +11,18 @@ import LostPasswordScene from 'ROOT/scenes/Auth/scenes/LostPassword'
 
 import { GetIsLoggedIn } from 'ROOT/services/graphql/localState.graphql'
 
-function NoMatch ({ ...rest }) {
+const NoMatch = ({ ...rest }) => {
 
     const { data } = useQuery(GetIsLoggedIn)
 
     return (
         <Route
             {...rest}
-            render={props => {
+            render={param => {
                 return (data && data.isLoggedIn ? (
-                    <Redirect to={{ pathname: routes.PRIVATE_DASHBOARD, state: { from: props.location } }} />
+                    <Redirect to={{ pathname: routes.PRIVATE_DASHBOARD, state: { from: param.location } }} />
                 ) : (
-                    <Redirect to={{ pathname: routes.LOGIN, state: { from: props.location } }} />
+                    <Redirect to={{ pathname: routes.LOGIN, state: { from: param.location } }} />
                 ))
             }
             }
@@ -30,13 +30,14 @@ function NoMatch ({ ...rest }) {
     )
 }
 
-function App () {
+
+const App = () => {
     return (
         <Router>
             <Switch>
                 <Route component={LoginScene} path={routes.LOGIN} />
                 <Route component={LostPasswordScene} path={routes.LOST_PASSWORD} />
-                <PrivateRoute component={AuthenticatedRouter} path={routes.PRIVATE_DEFAULT} />
+                <PrivateRoute component={AuthenticatedRouter} path={routes.PRIVATE_DEFAULT}  />
                 <Route component={NoMatch} />
             </Switch>
         </Router>
@@ -45,17 +46,17 @@ function App () {
 
 
 
-function PrivateRoute ({ component: Component, ...rest }) {
+const PrivateRoute = ({ component: Component, ...rest }) => {
     const { data } = useQuery(GetIsLoggedIn)
 
     return (
         <Route
             {...rest}
-            render={props =>
+            render={params =>
                 data && data.isLoggedIn ? (
-                    <Component {...props} />
+                    <Component {...params} />
                 ) : (
-                    <Redirect to={{ pathname: routes.LOGIN, state: { from: props.location.pathname } }} />
+                    <Redirect to={{ pathname: routes.LOGIN, state: { from: params.location.pathname } }} />
                 )
             }
         />
@@ -63,8 +64,7 @@ function PrivateRoute ({ component: Component, ...rest }) {
 }
 
 PrivateRoute.propTypes = {
-    component:PropTypes.element.isRequired,
-    location:PropTypes.object.isRequired,
+    component:PropTypes.any.isRequired,
 }
 
 export default App

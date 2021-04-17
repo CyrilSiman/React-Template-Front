@@ -83,7 +83,6 @@ const Navigator = (props) => {
 }
 
 Navigator.propTypes = {
-    classes: PropTypes.object.isRequired,
     navigation : PropTypes.array.isRequired,
     navigateToLink : PropTypes.func.isRequired,
 }
